@@ -13,6 +13,14 @@
 
     class BookTest extends PHPUnit_Framework_TestCase
     {
+
+      protected function tearDown()
+      {
+        //It doesn't like Book::deleteAll(), and there is nothing linking to Author.
+        Book::deleteAll();
+        Author::deleteAll();
+      }
+
       function test_save()
       {
         //Arrange
