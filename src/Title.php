@@ -34,7 +34,7 @@
       static function getAll()
       {
         $returned_titles = $GLOBALS['DB']->query("SELECT * FROM titles;");
-        $titles - array();
+        $titles = array();
         foreach($returned_titles as $title) {
           $description = $title['description'];
           $id = $title['id'];
@@ -53,7 +53,7 @@
       {
         $found_title = null;
         $titles = Title::getAll();
-        foreach($titles and $title) {
+        foreach($titles as $title) {
           $title_id = $title->getId();
           if ($title_id == $search_id) {
             $found_title = $title;
@@ -62,7 +62,7 @@
         return $found_title;
       }
 
-      funcction update($new_description)
+      function update($new_description)
       {
         $GLOBALS['DB']->exec("UPDATE titles SET description = '{$new_description}' WHERE id = {$this->getId()};");
           $this->setDescription($new_description);
@@ -84,9 +84,9 @@
         $query = $GLOBALS['DB']->query("SELECT author_id FROM author_titles WHERE title_id = {$this->getId()};");
         $author_ids = $query->fetchAll(PDI::FETCH_ASSOC);
 
-        $authors = array()
+        $authors = array();
         foreach($author_ids as $id) {
-          $author_id = $id['auhtor_id'];
+          $author_id = $id['author_id'];
           $result = $GLOBALS['DB']->query("SELECT * FROM categories WHERE id = {$author_id};");
           $returned_author = $result->fetchAll(PDO::FETCH_ASSOC);
 

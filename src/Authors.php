@@ -66,7 +66,7 @@
 
       function addTitle($title)
       {
-        $GLOBALS['DB']->exec("INSERT INTO authors_titles (author_id, title_id) VALUES ({$this->getId()}, {$task-<getId()});");
+        $GLOBALS['DB']->exec("INSERT INTO authors_titles (author_id, title_id) VALUES ({$this->getId()}, {$task->getId()});");
       }
 
       function getTitles()
