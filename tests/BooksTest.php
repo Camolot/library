@@ -45,20 +45,43 @@
         $title = "Speaker for the Dead";
         $date = "1987";
         $id = null;
-        $test_Book = new Book($title, $date, $id);
-        $test_Book->save();
+        $test_book = new Book($title, $date, $id);
+        $test_book->save();
 
         $title2 = "Frankenstein";
-        $date2 = "1987";
+        $date2 = "1750";
         $id2 = null;
-        $test_Book2 = new Book($title2, $date2, $id2);
-        $test_Book2->save();
+        $test_book2 = new Book($title2, $date2, $id2);
+        $test_book2->save();
 
         //Act
         $result = Book::getAll();
 
         //Assert
-        $this->assertEquals([$test_Book, $test_Book2], $result);
+        $this->assertEquals([$test_book, $test_book2], $result);
+      }
+
+      function testDeleteAll()
+      {
+        //Arrange
+        $title = "Speaker for the Dead";
+        $date = "1987";
+        $id = null;
+        $test_book = new Book($title, $date, $id);
+        $test_book->save();
+
+        $title2 = "Frankenstein";
+        $date2 = "1750";
+        $id2 = null;
+        $test_book2 = new Book($title2, $date2, $id2);
+        $test_book2->save();
+
+        //Act
+        Book::deleteAll();
+
+        //Assert
+        $result = Book::getAll();
+        $this->assertEquals([], $result);
       }
     }
 ?>

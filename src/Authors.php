@@ -1,4 +1,5 @@
 <?php
+//Ignore this, too.
     class Author
     {
       private $name;
